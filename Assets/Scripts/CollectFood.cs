@@ -9,7 +9,7 @@ public class CollectFood : MonoBehaviour
 
         if (food.gameObject.tag == "Food")
         {
-
+            Grow();
             Destroy(food.gameObject);
         }
 
@@ -28,7 +28,9 @@ public class CollectFood : MonoBehaviour
     }
     void Grow()
     {
-       // transform.localScale.x 
+        gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
     }
+
+
     
 }
