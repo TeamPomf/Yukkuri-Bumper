@@ -3,17 +3,17 @@ using System.Collections;
 
 public class MovementP2 : MonoBehaviour {
     Rigidbody rb;
-	// Use this for initialization
-	void Start ()
+    public Rigidbody opponentrb;
+    void OnCollisionEnter(Collision opponent)
     {
-        rb = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        Move();
-	}
+
+        if (opponent.gameObject.tag == "Player")
+        {
+
+            rb.AddForce(Vector3.Reflect(rb.position.normalized, opponentrb.position.normalized));
+
+        }
+    }
     void Move()
     {
         if (Input.GetKey("up"))
@@ -33,4 +33,16 @@ public class MovementP2 : MonoBehaviour {
             rb.AddForce(Vector3.right * Time.deltaTime * 200);
         };
     }
+    void Start ()
+    {
+        rb = GetComponent<Rigidbody>();
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        Move();
+	}
+ 
+   
 }
