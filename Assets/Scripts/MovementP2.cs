@@ -10,7 +10,7 @@ public class MovementP2 : MonoBehaviour {
         if (opponent.gameObject.tag == "Player")
         {
 
-            rb.AddForce(Vector3.Reflect(rb.position.normalized, opponentrb.position.normalized));
+            rb.AddForce(Vector3.Normalize(Vector3.Reflect(rb.position, opponentrb.position)) * 50);
 
         }
     }
