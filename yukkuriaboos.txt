@@ -1,0 +1,16 @@
+Yukkuri Bumper
+
+There are two sumo wrestlers that resemble the deformed faces of Reimu Hakurei and Marisa Kirisami from the Touhou series.
+The two of them are fighting over the large pile of desserts that will be awarded to the winner.
+
+Each player wants to push the other out of the ring.  There are pick-ups that make you bigger/faster.  Items are thrown in from off-stage.  You can sacrifice size for speed/pushing power. There will be multiple stages with various stage hazards and effects, such as moving platforms, pitfalls, and danger zones.
+
+The game will be entirely physics based, which 'movement' only adding force to the direction the player wants to move.
+The players will each be represented by a round, blob-like rigid body. Some arenas will have a clearly defined 'danger zone'
+where a flow field will push the players around helplessly.
+
+The experience of the game depends on your opponent.
+
+We plan on having the basic movement, food interaction, arena, and win/lose condition by the second week. For the third
+week, we plan on adding complexity to the arenas, player interactions, and food spawning. The fourth week will be spent
+on finishing touches. The fifth week will be spent on polish.
