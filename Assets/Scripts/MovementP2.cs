@@ -4,16 +4,16 @@ using System.Collections;
 public class MovementP2 : MonoBehaviour {
     Rigidbody rb;
     public Rigidbody opponentrb;
-    void OnCollisionEnter(Collision opponent)
-    {
+    //void OnCollisionEnter(Collision opponent)
+    //{
 
-        if (opponent.gameObject.tag == "Player")
-        {
+    //    if (opponent.gameObject.tag == "Player")
+    //    {
 
-            rb.AddForce(Vector3.Normalize(Vector3.Reflect(rb.position, opponentrb.position)) * 50);
+    //        rb.AddForce(Vector3.Normalize(Vector3.Reflect(rb.position, opponentrb.position)) * 50);
 
-        }
-    }
+    //    }
+    //}
     void Move()
     {
         if (Input.GetKey("up"))

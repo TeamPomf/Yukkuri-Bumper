@@ -5,35 +5,67 @@ public class Movement : MonoBehaviour {
 
     Rigidbody rb;
     public Rigidbody opponentrb;
+    public float initColForce = 200;
+    public float colForce = 200;
 
-    void OnCollisionEnter(Collision opponent)
-    {
+    //void OnCollisionEnter(Collision opponent)
+    //{
 
-        if (opponent.gameObject.tag == "Player")
-        {
+    //    if (opponent.gameObject.tag == "Player")
+    //    {
            
-            rb.AddForce(Vector3.Normalize(Vector3.Reflect(rb.position, opponentrb.position))*50);
+    //        //default value of collision force = 50 unless otherwise edited by user
+    //        rb.AddForce(Vector3.Normalize(Vector3.Reflect(rb.position, -opponentrb.position))*collisionForce);
 
-        }
-    }
+    //    }
+    //}
     void Move()
     {
-        if (Input.GetKey("w"))
+
+        SetMovementDir("w", Vector3.forward);
+        SetMovementDir("s", Vector3.back);
+        SetMovementDir("a", Vector3.left);
+        SetMovementDir("d", Vector3.right);
+        //if (Input.GetKey("w"))
+        //{
+        //    colForce += 10 * Time.deltaTime;
+        //    rb.AddForce(Vector3.forward * Time.deltaTime * colForce);                      
+        //};
+        //if (Input.GetKey("s"))
+        //{
+        //    colForce += 10 * Time.deltaTime;
+        //    rb.AddForce(Vector3.back * Time.deltaTime * colForce); 
+
+        //};
+        //if (Input.GetKey("a"))
+        //{
+        //    colForce += 10 * Time.deltaTime;
+        //    rb.AddForce(Vector3.left * Time.deltaTime * colForce);
+
+        //};
+        //if (Input.GetKey("d"))
+        //{
+        //    colForce += 10 * Time.deltaTime;
+        //    rb.AddForce(Vector3.right * Time.deltaTime * colForce);     
+
+        //};
+
+    }
+    void SetMovementDir(string key, Vector3 direction)
+    {
+        if (Input.GetKey(key))
         {
-            rb.AddForce(Vector3.forward * Time.deltaTime * 200);
+            if (colForce < 500)
+            {
+                colForce += 200 * Time.deltaTime;
+            }
+            
+            rb.AddForce(direction * Time.deltaTime * colForce);
         };
-        if (Input.GetKey("s"))
+        if (Input.GetKeyUp(key))
         {
-            rb.AddForce(Vector3.back * Time.deltaTime * 200);
-        };
-        if (Input.GetKey("a"))
-        {
-            rb.AddForce(Vector3.left * Time.deltaTime * 200);
-        };
-        if (Input.GetKey("d"))
-        {
-            rb.AddForce(Vector3.right * Time.deltaTime * 200);
-        };
+            colForce = initColForce;
+        }
     }
 
     void Start ()
@@ -45,6 +77,7 @@ public class Movement : MonoBehaviour {
 	void Update ()
     {
         Move();
-	}
+        
+    }
  
 }
