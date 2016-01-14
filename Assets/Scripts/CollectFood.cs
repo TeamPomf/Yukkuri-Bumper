@@ -25,7 +25,7 @@ public class CollectFood : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 	
-	// Update is called once per frame
+	
 	void Update ()
     {
        
@@ -33,16 +33,16 @@ public class CollectFood : MonoBehaviour
     }
     void Grow()
     {
-        rb.mass += .005f;
-        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+        rb.mass += .025f;
+        transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
     }
     void Shrink()
     {
-        //transform.localScale > Vector3(0.75f,0.75f,0.75f)
+        //NOT ALLOWED TO DO THIS IN A CHRISTIAN CODEBASE transform.localScale > Vector3(0.75f,0.75f,0.75f)
         if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
         {
-            rb.mass -= .0025f;
-            transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+            rb.mass -= .015f;
+            transform.localScale -= new Vector3(0.25f, 0.25f, 0.25f);
         }
         
     }
