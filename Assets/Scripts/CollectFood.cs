@@ -33,7 +33,7 @@ public class CollectFood : MonoBehaviour
     }
     void Grow()
     {
-        rb.mass += .005f;
+        rb.mass += .025f;
         transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
     }
     void Shrink()
@@ -41,7 +41,7 @@ public class CollectFood : MonoBehaviour
         //NOT ALLOWED TO DO THIS IN A CHRISTIAN CODEBASE transform.localScale > Vector3(0.75f,0.75f,0.75f)
         if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
         {
-            rb.mass -= .0025f;
+            rb.mass -= .015f;
             transform.localScale -= new Vector3(0.25f, 0.25f, 0.25f);
         }
         
