@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Conveyor : MonoBehaviour {
     public float rotationSpeed = 1000;
-    public GameObject test;
-    Rigidbody rb;
+  
+
     public GameObject[] wheels;
+    Rigidbody rb;
+    
     
     
     void OnCollisionStay(Collision collision)
@@ -13,6 +15,8 @@ public class Conveyor : MonoBehaviour {
         Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
        rb.AddForce(transform.right*100);
     }
+
+
     void Start ()
     {
 	
@@ -25,6 +29,7 @@ public class Conveyor : MonoBehaviour {
         {
             wheel.transform.Rotate(Vector3.down * Time.deltaTime * rotationSpeed);
         }
+       
     }
 
    
