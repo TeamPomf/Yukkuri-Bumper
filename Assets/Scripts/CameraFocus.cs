@@ -7,30 +7,59 @@ public class CameraFocus : MonoBehaviour
     public GameObject obj1;
     public GameObject obj2;
     public Camera cam;
+    public GameObject WinSquare, otherWinSquare;
+    Vector3 cameraOffset;//, obj1Offset, obj2Offset;
+    public int playerWin;
 
 	// Use this for initialization
 	void Start ()
     {
-	
+        playerWin = 0;
+        cameraOffset = cam.transform.position;
+        //obj1Offset = obj1.transform.position;
+        //obj2Offset = obj2.transform.position;
 	}
-	
-	// Update is called once per frame
+
+    void OnTriggerEnter(Collider cd)
+    {
+        if (cd.gameObject.name == obj1.name || cd.gameObject.name == obj2.name)
+        {
+
+        }
+    }
+    
+    
+    // Update is called once per frame
 	void Update ()
     {
-        //Vector3 interp;
-        //interp = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f) - transform.position;
-        //transform.Translate(interp);
-        transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
-        Vector3 camOffset = new Vector3(0f, 12f, -14f);
-        cam.transform.position = transform.position + camOffset;
+        if (playerWin == 0)
+        {
+            transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
+            cam.transform.position = transform.position + cameraOffset;
+        }
+        else //playerWin == 2 or 1
+        {
+            //WinSquare.
+            //obj1.transform.position = obj1Offset;
+            //obj2.transform.position = obj2Offset;
+            cam.transform.position = cameraOffset;
+        }
 
-        //float tx = Mathf.Lerp(obj1.transform.position.x, obj2.transform.position.x, 0.5f) - transform.position.x;
-        //float ty = Mathf.Lerp(obj1.transform.position.y, obj2.transform.position.y, 0.5f) - transform.position.y;
-        //float tz = Mathf.Lerp(obj1.transform.position.z, obj2.transform.position.z, 0.5f) - transform.position.z;
-        //transform.Translate(tx, ty, tz);
-        //tx = transform.position.x - cam.transform.position.x;
-        //ty = transform.position.y - cam.transform.position.y + 12;
-        //tz = transform.position.z - cam.transform.position.z + -14;
-        //cam.transform.Translate(tx,ty,tz);
+        if (transform.position.y < -1)
+        {
+            if (obj1.transform.position.y < obj2.transform.position.y)
+            {
+                playerWin = 2;
+                otherWinSquare.GetComponent<Renderer>().enabled = true;
+                //PLAYER TWO WINS
+            }
+            else
+            {
+                playerWin = 1;
+                WinSquare.GetComponent<Renderer>().enabled = true;
+
+                //PLAYER ONE WINS
+            }
+        }
     }
 }
