@@ -2,10 +2,18 @@
 using System.Collections;
 
 public class Conveyor : MonoBehaviour {
-   public float rotationSpeed = 1000;
+    public float rotationSpeed = 1000;
+    public GameObject test;
+    Rigidbody rb;
+    public GameObject[] wheels;
     
-	// Use this for initialization
-	void Start ()
+    
+    void OnCollisionStay(Collision collision)
+    {
+        Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+       rb.AddForce(transform.right*100);
+    }
+    void Start ()
     {
 	
 	}
@@ -13,8 +21,11 @@ public class Conveyor : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.Rotate(Vector3.up*Time.deltaTime*rotationSpeed);
-	}
+        foreach (var wheel in wheels)
+        {
+            wheel.transform.Rotate(Vector3.down * Time.deltaTime * rotationSpeed);
+        }
+    }
 
    
 }
