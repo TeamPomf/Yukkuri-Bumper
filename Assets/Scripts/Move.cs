@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
     
-    float InitColForce = 200;
-    float ColForce = 200;
+    public float initColForce = 200;
+    public float colForce = 200;
+    public float maxColForce = 500;
     public string up;
     public string down;
     public string left;
@@ -27,7 +28,7 @@ public class Move : MonoBehaviour {
     {
         if (Input.GetKey(key))
         {
-            if (collidingForce < 500)
+            if (collidingForce < maxColForce)
             {
                 collidingForce += 200 * Time.deltaTime;
             }
@@ -42,9 +43,9 @@ public class Move : MonoBehaviour {
     void Movement()
     {
 
-        SetMovementDir(rb, up, Vector3.forward, InitColForce, ColForce);
-        SetMovementDir(rb, down, Vector3.back, InitColForce, ColForce);
-        SetMovementDir(rb, left, Vector3.left, InitColForce, ColForce);
-        SetMovementDir(rb, right, Vector3.right, InitColForce, ColForce);
+        SetMovementDir(rb, up, Vector3.forward, initColForce, colForce);
+        SetMovementDir(rb, down, Vector3.back, initColForce, colForce);
+        SetMovementDir(rb, left, Vector3.left, initColForce, colForce);
+        SetMovementDir(rb, right, Vector3.right, initColForce, colForce);
     }
 }
