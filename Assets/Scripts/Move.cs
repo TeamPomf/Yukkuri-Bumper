@@ -5,7 +5,7 @@ public class Move : MonoBehaviour {
     
     public float initColForce = 200;
     public float colForce = 200;
-    public float maxColForce = 500;
+    public float maxColForce = 400;
     public string up;
     public string down;
     public string left;
@@ -30,7 +30,7 @@ public class Move : MonoBehaviour {
         {
             if (collidingForce < maxColForce)
             {
-                collidingForce += 200 * Time.deltaTime;
+                collidingForce += colForce * Time.deltaTime;
             }
             myRB.AddForce(direction * Time.deltaTime * collidingForce);
         };

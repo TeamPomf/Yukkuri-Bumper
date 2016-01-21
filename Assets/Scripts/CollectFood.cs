@@ -5,8 +5,9 @@ public class CollectFood : MonoBehaviour
 {
     Rigidbody rb;
     Move playerMovement;
-    int energy;
+    float energy;
     float ballScale = .25f;
+    float massIncrement = 0.01f;
     
 
 
@@ -39,6 +40,7 @@ public class CollectFood : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<Move>();
+        rb.mass = energy * massIncrement;
     }
 	
 	
@@ -53,6 +55,7 @@ public class CollectFood : MonoBehaviour
         {
             energy += 1;
             transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+            rb.mass = energy*massIncrement;
         }
         
     }
@@ -64,8 +67,13 @@ public class CollectFood : MonoBehaviour
         //    rb.mass -= .0015f;
         //    transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
         //}
-        energy -= 1;
-        transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+        if (energy>0)
+        {
+            energy -= 1;
+            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+            rb.mass = massIncrement * energy;
+        }
+        
 
 
     }
