@@ -5,6 +5,11 @@ public class CollectFood : MonoBehaviour
 {
     Rigidbody rb;
     Move playerMovement;
+    int energy;
+    float ballScale = .25f;
+    
+
+
     
     void OnCollisionEnter(Collision food)
     {
@@ -29,6 +34,9 @@ public class CollectFood : MonoBehaviour
 
     void Start ()
     {
+        energy = 3;
+        transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+        
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<Move>();
     }
@@ -41,18 +49,25 @@ public class CollectFood : MonoBehaviour
     }
     void Grow()
     {
-        rb.mass += .0025f;
-        transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+        if (energy < 5)
+        {
+            energy += 1;
+            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+        }
+        
     }
     void Shrink()
     {
         //NOT ALLOWED TO DO THIS IN A CHRISTIAN CODEBASE transform.localScale > Vector3(0.75f,0.75f,0.75f)
-        if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
-        {
-            rb.mass -= .0015f;
-            transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
-        }
-        
+        //if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
+        //{
+        //    rb.mass -= .0015f;
+        //    transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
+        //}
+        energy -= 1;
+        transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+
+
     }
     void Speed()
     {
