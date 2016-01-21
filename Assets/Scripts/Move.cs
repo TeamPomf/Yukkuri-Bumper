@@ -16,9 +16,15 @@ public class Move : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+    void OnCollisionStay(Collision groundTest)
+    {
+        if (groundTest.gameObject.tag == "Ground")
+        {
+
+        }
+    }
+    // Update is called once per frame
+    void Update ()
     {
         Movement();
 	}

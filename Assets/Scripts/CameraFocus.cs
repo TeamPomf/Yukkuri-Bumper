@@ -32,17 +32,16 @@ public class CameraFocus : MonoBehaviour
     // Update is called once per frame
 	void Update ()
     {
-        if (playerWin == 0)
-        {
-            transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
-            cam.transform.position = transform.position + cameraOffset;
-        }
-        else //playerWin == 2 or 1
+
+        transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
+        cam.transform.position = transform.position + cameraOffset;
+
+        if (playerWin > 0) //playerWin == 2 or 1
         {
             //WinSquare.
             //obj1.transform.position = obj1Offset;
             //obj2.transform.position = obj2Offset;
-            cam.transform.position = cameraOffset;
+            //cam.transform.position = cameraOffset;
         }
 
         if (transform.position.y < -1)
