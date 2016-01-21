@@ -8,8 +8,16 @@ public class CollectFood : MonoBehaviour
     float energy;
     float ballScale = .25f;
     float massIncrement = 0.01f;
-    
 
+    [SerializeField]        // lets you keep a member variable private, but exposed to the Inspector
+    Material normalFace;
+
+    [SerializeField]
+    Material eatingFace;
+
+    MeshRenderer render;
+
+    float nomnomTimer = 0.0f;
 
     
     void OnCollisionEnter(Collision food)
@@ -19,16 +27,19 @@ public class CollectFood : MonoBehaviour
         {
             Grow();
             Destroy(food.gameObject);
+            nomnomTimer = 0.5f;
         }
         if (food.gameObject.tag == "FoodBad")
         {
             Shrink();
             Destroy(food.gameObject);
+            nomnomTimer = 0.5f;
         }
         if (food.gameObject.tag == "FoodSpeed")
         {
             Speed();
             Destroy(food.gameObject);
+            nomnomTimer = 0.5f;
         }
     }
  
@@ -39,6 +50,7 @@ public class CollectFood : MonoBehaviour
         transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
         
         rb = GetComponent<Rigidbody>();
+        render = GetComponent<MeshRenderer>();
         playerMovement = GetComponent<Move>();
         rb.mass = energy * massIncrement;
     }
@@ -46,7 +58,15 @@ public class CollectFood : MonoBehaviour
 	
 	void Update ()
     {
-       
+        nomnomTimer -= Time.deltaTime;
+       if (nomnomTimer > 0.0f)
+        {
+            render.material = eatingFace;
+        }
+       else
+        {
+            render.material = normalFace;
+        }
      
     }
     void Grow()
@@ -56,6 +76,7 @@ public class CollectFood : MonoBehaviour
             energy += 1;
             transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
             rb.mass = energy*massIncrement;
+            
         }
         
     }
@@ -73,7 +94,6 @@ public class CollectFood : MonoBehaviour
             transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
             rb.mass = massIncrement * energy;
         }
-        
 
 
     }
