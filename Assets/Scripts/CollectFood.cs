@@ -6,7 +6,7 @@ public class CollectFood : MonoBehaviour
     Rigidbody rb;
     Move playerMovement;
     float energy;
-    float ballScale = .25f;
+    float ballScale = .5f;
     float massIncrement = 0.01f;
 
     [SerializeField]        // lets you keep a member variable private, but exposed to the Inspector
@@ -88,7 +88,7 @@ public class CollectFood : MonoBehaviour
         //    rb.mass -= .0015f;
         //    transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
         //}
-        if (energy>0)
+        if (energy>1)
         {
             energy -= 1;
             transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;

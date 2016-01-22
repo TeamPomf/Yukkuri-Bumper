@@ -27,7 +27,12 @@ public class Move : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Movement();
+        if (rb.position.y < 1.5)
+        {
+            Movement();
+        }
+      
+
 	}
 
     void SetMovementDir(Rigidbody myRB, string key, Vector3 direction, float initForce, float collidingForce)

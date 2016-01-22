@@ -41,7 +41,7 @@ public class CameraFocus : MonoBehaviour
             //WinSquare.
             //obj1.transform.position = obj1Offset;
             //obj2.transform.position = obj2Offset;
-            //cam.transform.position = cameraOffset;
+            cam.transform.position = cameraOffset;
         }
 
         if (transform.position.y < -1)
