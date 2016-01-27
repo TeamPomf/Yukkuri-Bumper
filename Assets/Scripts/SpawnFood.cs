@@ -8,6 +8,7 @@ public class SpawnFood : MonoBehaviour {
     GameObject food1;
     [SerializeField]
     GameObject food2;
+    public float startDelay = 0;
     public int foodToSpawn = 40;
     public float minTime = 4;
     public float maxTime = 10;
@@ -32,7 +33,9 @@ public class SpawnFood : MonoBehaviour {
 
     IEnumerator Spawn(GameObject prefab, int amount, float timeMin, float timeMax)
     {
-      
+
+        yield return new WaitForSeconds(startDelay);
+
         for (int i = 0; i < amount; i++)
         {
             Instantiate(prefab, transform.position, Quaternion.identity);
