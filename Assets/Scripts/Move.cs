@@ -10,6 +10,7 @@ public class Move : MonoBehaviour {
     public string down;
     public string left;
     public string right;
+    bool isColliding = false;
     Rigidbody rb;
 
     // Use this for initialization
@@ -17,23 +18,24 @@ public class Move : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
 	}
-    void OnCollisionStay(Collision groundTest)
+    void OnCollision(Collision foo)
     {
-        if (groundTest.gameObject.tag == "Ground")
-        {
-
-        }
+        isColliding = true;
+    }
+    void OnCollisionStay(Collision foo)
+    {
+        isColliding = true;
     }
     // Update is called once per frame
     void Update ()
     {
-        if (rb.position.y < 1.5)
+        if (rb.position.y < 1.5 || isColliding)
         {
             Movement();
         }
-      
 
-	}
+        isColliding = false;
+    }
 
     void SetMovementDir(Rigidbody myRB, string key, Vector3 direction, float initForce, float collidingForce)
     {
