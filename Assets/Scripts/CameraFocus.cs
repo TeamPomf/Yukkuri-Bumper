@@ -32,7 +32,11 @@ public class CameraFocus : MonoBehaviour
     // Update is called once per frame
 	void Update ()
     {
-
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+           
         transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
         cam.transform.position = transform.position + cameraOffset;
 
