@@ -32,32 +32,39 @@ public class CameraFocus : MonoBehaviour
     // Update is called once per frame
 	void Update ()
     {
-
-        transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
-        cam.transform.position = transform.position + cameraOffset;
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+           
 
         if (playerWin > 0) //playerWin == 2 or 1
         {
             //WinSquare.
             //obj1.transform.position = obj1Offset;
             //obj2.transform.position = obj2Offset;
-            //cam.transform.position = cameraOffset;
+            cam.transform.position = cameraOffset;
+            playerWin = -1;
         }
-
-        if (transform.position.y < -1)
+        if (playerWin == 0)
         {
-            if (obj1.transform.position.y < obj2.transform.position.y)
+            transform.position = Vector3.Lerp(obj1.transform.position, obj2.transform.position, 0.5f);
+            cam.transform.position = transform.position + cameraOffset;
+            if (transform.position.y < -1)
             {
-                playerWin = 2;
-                otherWinSquare.GetComponent<Renderer>().enabled = true;
-                //PLAYER TWO WINS
-            }
-            else
-            {
-                playerWin = 1;
-                WinSquare.GetComponent<Renderer>().enabled = true;
+                if (obj1.transform.position.y < obj2.transform.position.y)
+                {
+                    playerWin = 2;
+                    otherWinSquare.GetComponent<Renderer>().enabled = true;
+                    //PLAYER TWO WINS
+                }
+                else
+                {
+                    playerWin = 1;
+                    WinSquare.GetComponent<Renderer>().enabled = true;
 
-                //PLAYER ONE WINS
+                    //PLAYER ONE WINS
+                }
             }
         }
     }

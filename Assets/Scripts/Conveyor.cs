@@ -13,7 +13,7 @@ public class Conveyor : MonoBehaviour {
     void OnCollisionStay(Collision collision)
     {
         Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-       rb.AddForce(transform.right*100);
+       rb.AddForce(transform.right);
     }
 
 
