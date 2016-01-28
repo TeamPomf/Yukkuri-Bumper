@@ -7,16 +7,20 @@ public class Smash : MonoBehaviour {
     public Rigidbody Target;
     public KeyCode SmashKey;
     public int SmashForce;
+    CollectFood food;
+    float cooldown = 3;
 	// Use this for initialization
 	void Start ()
     {
 	    Player = GetComponent<Rigidbody>();
+        food = GetComponent<CollectFood>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if (Input.GetKeyDown(SmashKey))
+        cooldown -= Time.deltaTime;
+	    if (Input.GetKeyDown(SmashKey)&& food.energy>0&&cooldown<0)
         {
             if (Vector3.Distance(Player.position, Target.position )< 4)
             {
@@ -27,6 +31,8 @@ public class Smash : MonoBehaviour {
             {
                 Player.AddForce(Vector3.Normalize(Player.velocity) * SmashForce);
             }
+            food.Shrink();
+            cooldown = 3;
         }
 	}
 }

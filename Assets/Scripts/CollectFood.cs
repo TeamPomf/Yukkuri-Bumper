@@ -5,7 +5,7 @@ public class CollectFood : MonoBehaviour
 {
     Rigidbody rb;
     Move playerMovement;
-    float energy;
+    public float energy;
     float ballScale = .5f;
     float massIncrement = 0.01f;
 
@@ -19,7 +19,41 @@ public class CollectFood : MonoBehaviour
 
     float nomnomTimer = 0.0f;
 
-    
+    void Grow()
+    {
+        if (energy < 5)
+        {
+            energy += 1;
+            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+            rb.mass = energy * massIncrement;
+
+        }
+
+    }
+    public void Shrink()
+    {
+        //NOT ALLOWED TO DO THIS IN A CHRISTIAN CODEBASE transform.localScale > Vector3(0.75f,0.75f,0.75f)
+        //if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
+        //{
+        //    rb.mass -= .0015f;
+        //    transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
+        //}
+        if (energy > 1)
+        {
+            energy -= 1;
+            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
+            rb.mass = massIncrement * energy;
+        }
+
+
+    }
+    void Speed()
+    {
+        playerMovement.colForce += 50;
+        playerMovement.initColForce += 50;
+        playerMovement.maxColForce += 50;
+    }
+
     void OnCollisionEnter(Collision food)
     {
 
@@ -69,40 +103,7 @@ public class CollectFood : MonoBehaviour
         }
      
     }
-    void Grow()
-    {
-        if (energy < 5)
-        {
-            energy += 1;
-            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
-            rb.mass = energy*massIncrement;
-            
-        }
-        
-    }
-    void Shrink()
-    {
-        //NOT ALLOWED TO DO THIS IN A CHRISTIAN CODEBASE transform.localScale > Vector3(0.75f,0.75f,0.75f)
-        //if (transform.localScale.x > 0.75f && transform.localScale.y > 0.75f && transform.localScale.z > 0.75f )
-        //{
-        //    rb.mass -= .0015f;
-        //    transform.localScale -= new Vector3(0.025f, 0.025f, 0.025f);
-        //}
-        if (energy>1)
-        {
-            energy -= 1;
-            transform.localScale = new Vector3(ballScale, ballScale, ballScale) * energy;
-            rb.mass = massIncrement * energy;
-        }
-
-
-    }
-    void Speed()
-    {
-        playerMovement.colForce += 50;
-        playerMovement.initColForce += 50;
-        playerMovement.maxColForce += 50;
-    }
+    
 
 
 }

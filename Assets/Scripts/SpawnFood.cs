@@ -20,7 +20,7 @@ public class SpawnFood : MonoBehaviour {
     {
         StartCoroutine(Spawn(food0,foodToSpawn,minTime, maxTime, food0Delay));
         StartCoroutine(Spawn(food1, foodToSpawn,minTime, maxTime + 30, food1Delay));
-        StartCoroutine(Spawn(food2, foodToSpawn,minTime, maxTime + 40, food2Delay));
+        StartCoroutine(Spawn(food2, foodToSpawn,minTime, maxTime + 40, food2Delay));//hacky, but it will display as unassigned reference if we do not put anything in here regardless if we need it or not
     }
 
 
