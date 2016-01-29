@@ -31,3 +31,6 @@ Credit to Z7def for the Reimu face texture
 
 http://www.layerlab.io/
 Credit to Layer Lab for the 3d Bakery Object models
+
+http://www.artstation.com/artist/antonioneves
+Credit to Antonio Neves for the Wood Texture Floor
