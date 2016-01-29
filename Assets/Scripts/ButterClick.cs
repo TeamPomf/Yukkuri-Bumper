@@ -9,9 +9,14 @@ public class ButterClick : MonoBehaviour {
 	
 	}
 	
-    public void ArenaClick()
+    public void ArenaOneClick()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void ArenaTwoClick()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
 	// Update is called once per frame
