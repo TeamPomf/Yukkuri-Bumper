@@ -4,6 +4,8 @@ using System.Collections;
 public class SpawnFood : MonoBehaviour {
     [SerializeField]
     GameObject[] food;
+    [SerializeField]
+    GameObject[] badfood;
 
     public int foodToSpawn = 40;
     public int food0Delay = 5;
@@ -37,10 +39,17 @@ public class SpawnFood : MonoBehaviour {
     {
 
         yield return new WaitForSeconds(delay);
-
+        Random.Range(0, 100);
         for (int i = 0; i < amount; i++)
         {
-            Instantiate(food[Random.Range(0, 6)], transform.position, Quaternion.identity);
+            if (Random.Range(0, 9) < 7)
+            {
+                Instantiate(badfood[Random.Range(0, 6)], transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(food[Random.Range(0, 6)], transform.position, Quaternion.identity);
+            }
             
             yield return new WaitForSeconds(Random.Range(timeMin, timeMax));
         }
