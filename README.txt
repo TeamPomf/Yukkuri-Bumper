@@ -34,3 +34,10 @@ Credit to Layer Lab for the 3d Bakery Object models
 
 http://www.artstation.com/artist/antonioneves
 Credit to Antonio Neves for the Wood Texture Floor
+
+http://www.soundbible.com
+Credit to snottyboy for Jump mp3
+Credit to Mike Koenig for Water Drop mp3
+
+http://www16.big.or.jp/~zun/
+Credit to ZUN for Eternal Shrine Maiden mp3 and original Touhou concept
