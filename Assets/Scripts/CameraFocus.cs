@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraFocus : MonoBehaviour
 {
-
     public GameObject obj1;
     public GameObject obj2;
     public Camera cam;
@@ -66,6 +65,11 @@ public class CameraFocus : MonoBehaviour
                     //PLAYER ONE WINS
                 }
             }
+        }
+        if (playerWin==-1 && Input.GetKey(KeyCode.Space))
+        {
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
     }
 }
