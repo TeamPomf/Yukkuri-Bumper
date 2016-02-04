@@ -15,6 +15,12 @@ We plan on having the basic movement, food interaction, arena, and win/lose cond
 week, we plan on adding complexity to the arenas, player interactions, and food spawning. The fourth week will be spent
 on finishing touches. The fifth week will be spent on polish.
 
+Controls:
+Player1:
+WASD and F to boost 
+Player2:
+Arrow keys and keypad 0 to boost
+
 
 REQUIREMENTS:
 Unity 5.XX or later
