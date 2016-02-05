@@ -6,14 +6,16 @@ public class SpawnFood : MonoBehaviour {
     GameObject[] food;
     [SerializeField]
     GameObject[] badfood;
-
+    
+    [SerializeField]
+    CameraFocus foo;
     public int foodToSpawn = 40;
     public int food0Delay = 5;
     public int food1Delay = 9;
     public int food2Delay = 15;
     public float minTime = 8;
     public float maxTime = 10;
-
+    int foodpoop = 40;
  
 
 
@@ -31,7 +33,12 @@ public class SpawnFood : MonoBehaviour {
 
 	void Update ()
     {
-        //StartCoroutine(Spawn(food[Random.Range(0, 6)], foodToSpawn, minTime, maxTime, food0Delay));
+        if (foo.playerWin == -1 && foodpoop > 0)
+        {
+            StartCoroutine(Spawn(20, 1, 2, 2, false));
+            foodpoop--;
+        }
+
     }
     
 
@@ -55,6 +62,18 @@ public class SpawnFood : MonoBehaviour {
         }
         
     }
+    IEnumerator Spawn(int amount, float timeMin, float timeMax, float delay, bool f)
+    {
 
-   
+        yield return new WaitForSeconds(delay);
+        Random.Range(0, 100);
+        for (int i = 0; i < amount; i++)
+        {
+            Instantiate(badfood[Random.Range(0, 6)], transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(timeMin, timeMax));
+        }
+
+    }
+
+
 }
